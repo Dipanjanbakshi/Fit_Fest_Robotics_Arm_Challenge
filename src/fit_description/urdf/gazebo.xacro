@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="learm">
+
+  <!-- Materials for Visual Appearance -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="shoulder_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="humerus_link">
+    <material>Gazebo/Gold</material>
+  </gazebo>
+
+  <gazebo reference="forearm_link">
+    <material>Gazebo/Gold</material>
+  </gazebo>
+
+  <gazebo reference="wrist_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="hand_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="grip_left_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="grip_right_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="finger_left_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="finger_right_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="tendon_left_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="tendon_right_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <!-- ROS 2 Control -->
+   <gazebo>
+    <plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <robot_param>robot_description</robot_param>
+      <robot_param_node>robot_state_publisher</robot_param_node>
+      <parameters>$(find fit_controller)/config/fit_controllers.yaml</parameters>
+    </plugin>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+  </gazebo>
+
+</robot>
